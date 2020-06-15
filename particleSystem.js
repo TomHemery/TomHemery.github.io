@@ -1,13 +1,18 @@
 class ParticleSystem{
-    constructor(particleSpacing){
+    constructor(){
         this.particles = [];
-        this.particleRadius = width / particleSpacing;
+        this.particleRadius = width / 16;
 
-        for(let x = this.particleRadius * 2; x < width - this.particleRadius; x+= particleSpacing){
-            for(let y = this.particleRadius * 2; y < height - this.particleRadius; y+= particleSpacing){
-                this.particles.push(new Particle(x, y, random(this.particleRadius - 5, this.particleRadius + 80)));
+        let offsetX = this.particleRadius;
+        let offsetY = this.particleRadius;
+
+        for(let x = 0; x <= width ; x += offsetX){
+            for(let y = 0; y <= height ; y+= offsetY ){
+                this.particles.push(new Particle(x, y, this.particleRadius));
             }
         }
+
+        console.log("created: " + this.particles.length + " particles");
     }
 
     update(){

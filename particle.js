@@ -19,7 +19,7 @@ class Particle{
 
         if(magSq < Particle.maxSqDist || sqDistHome > 1 || this.vel.magSq() > 0.1){
             this.colour = color(255, constrain(map(sqDistHome, 0, 100000, 10, 50), 0, 50));
-            if(magSq < Particle.maxSqDist){
+            if(magSq < Particle.maxSqDist && magSq > 0){
                 fromMouse.setMag(100 * this.radius / magSq);
                 this.vel.add(fromMouse);
             }
