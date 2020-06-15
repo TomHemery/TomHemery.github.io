@@ -1,4 +1,9 @@
-h1{
+h1, p{
     color:white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align:center;
+}
+
+body{
+    overflow-y: auto;
 }
