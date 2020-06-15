@@ -7,7 +7,7 @@ class Particle{
         this.acc = createVector();
         this.radius = radius;
         this.diameter = 2 * radius;
-        this.colour = color(255, 50);
+        this.colour = color(255, 10);
     }
 
     update(){
@@ -18,10 +18,9 @@ class Particle{
         let sqDistHome = toHome.magSq();
 
         if(magSq < Particle.maxSqDist || sqDistHome > 1 || this.vel.magSq() > 0.1){
-            this.colour = color(255, map(sqDistHome, 0, 10000, 50, 255));
-
+            this.colour = color(255, constrain(map(sqDistHome, 0, 100000, 10, 50), 0, 50));
             if(magSq < Particle.maxSqDist){
-                fromMouse.setMag(100 / magSq);
+                fromMouse.setMag(100 * this.radius / magSq);
                 this.vel.add(fromMouse);
             }
             else{

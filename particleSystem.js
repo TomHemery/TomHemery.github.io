@@ -1,9 +1,12 @@
 class ParticleSystem{
-    constructor(numParticles){
+    constructor(particleSpacing){
         this.particles = [];
+        this.particleRadius = width / particleSpacing;
 
-        for(let i = 0; i < numParticles; i++){
-            this.particles.push(new Particle(random(width), random(height), 1));
+        for(let x = this.particleRadius * 2; x < width - this.particleRadius; x+= particleSpacing){
+            for(let y = this.particleRadius * 2; y < height - this.particleRadius; y+= particleSpacing){
+                this.particles.push(new Particle(x, y, random(this.particleRadius - 5, this.particleRadius + 80)));
+            }
         }
     }
 

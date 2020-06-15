@@ -12,7 +12,7 @@ function setup() {
 
     ellipseMode(CENTER);
 
-    particleSystem = new ParticleSystem(500);
+    particleSystem = new ParticleSystem(80);
 }
   
 function draw() {
