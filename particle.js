@@ -18,7 +18,7 @@ class Particle{
         let toHome = createVector(this.home.x - this.pos.x, this.home.y - this.pos.y);
         let sqDistHome = toHome.magSq();
 
-        this.colour = color(255, map(sqDistHome, 0, 10000, 50, 255));
+        this.colour = color(255, map(sqDistHome, 0, 10000, 25, 200));
         this.setRadius(constrain(map(sqDistHome, 0, 10000, this.startRadius, Particle.maxRadius), this.startRadius, Particle.maxRadius));
 
         if(magSq < Particle.maxSqDist){
@@ -74,4 +74,4 @@ class Particle{
 Particle.dampening = 0.95;
 Particle.maxSqDist = 10000;
 Particle.maxHomeForce = 5;
-Particle.maxRadius = 20;
+Particle.maxRadius = 12;
