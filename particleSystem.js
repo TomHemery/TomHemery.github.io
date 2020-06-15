@@ -1,14 +1,9 @@
 class ParticleSystem{
-
-
-
     constructor(numParticles){
         this.particles = [];
-        this.minParticleRadius = 2;
-        this.maxParticleRadius = 8;
 
         for(let i = 0; i < numParticles; i++){
-            this.particles.push(new Particle(random(width), random(height), random(this.minParticleRadius, this.maxParticleRadius)));
+            this.particles.push(new Particle(random(width), random(height), 1));
         }
     }
 
