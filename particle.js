@@ -1,52 +1,49 @@
 class Particle{
+    
+    constructor(x, y, size, r, g, b){
+        this.maxAlpha = 200;
+        this.maxDuration = random(20, 60);
+        this.remainingDuration = this.maxDuration;
+        this.maxDecay = 1;
+        this.minVel = 1;
+        this.maxVel = 3;
+        this.maxVelDampening = 0.99;
 
-    constructor(x, y, radius){
-        this.pos = createVector(x, y);
-        this.home = createVector(x, y);
-        this.vel = createVector();
-        this.acc = createVector();
-        this.radius = radius;
-        this.diameter = 2 * radius;
-        this.colour = color(255, 10);
+        this.pos = createVector(x, y);  
+        this.size = size;
+        this.vel = p5.Vector.random2D();
+        this.vel.mult(random(this.minVel, this.maxVel));
+        this.acc = p5.Vector.random2D();
+        this.acc.mult(0.1);
+        this.r = r;
+        this.g = g;
+        this.b = b;
     }
-
-    update(){
-        
-        let fromMouse = createVector(this.pos.x - mouseX, this.pos.y - mouseY);
-        let magSq = fromMouse.magSq();
-        let toHome = createVector(this.home.x - this.pos.x, this.home.y - this.pos.y);
-        let sqDistHome = toHome.magSq();
-
-        if(magSq < Particle.maxSqDist || sqDistHome > 1 || this.vel.magSq() > 0.1){
-            this.colour = color(255, constrain(map(sqDistHome, 0, 100000, 10, 50), 0, 50));
-            if(magSq < Particle.maxSqDist && magSq > 0){
-                fromMouse.setMag(100 * this.radius / magSq);
-                this.vel.add(fromMouse);
-            }
-            else{
-                toHome.setMag(constrain(sqDistHome / 10000, 0, Particle.maxHomeForce))
-                this.vel.add(toHome);
-            }
-
-            this.pos.add(this.vel);
-            this.vel.mult(Particle.dampening);
-        }
+    
+    show(wind){
+        fill(this.r, this.g, this.b, map(this.remainingDuration, 0, this.maxDuration, 0, this.maxAlpha));
+        ellipse(this.pos.x, this.pos.y, this.size, this.size);
+        this.update(wind);
     }
-
-    display(){
-        fill(this.colour);
-        noStroke();
-        ellipse(this.pos.x, this.pos.y, this.diameter, this.diameter);
+    
+    update(wind){
+        this.remainingDuration -= random(this.maxDecay);
+        this.calculateForces(wind);
+        this.vel.mult(random(this.maxVelDampening, 1));
+        this.vel.add(this.acc);
+        this.pos.add(this.vel);
+        this.acc.mult(0);
     }
-
-    setRadius(radius){
-        this.radius = radius;
-        this.diameter = 2 * radius;
+    
+     calculateForces(wind){
+        this.acc = p5.Vector.random2D();
+        this.acc.mult(0.1);
+        this.acc.add(wind);
     }
-
+   
+    
+    finished(){
+        return this.remainingDuration <= 0;
+    }
+    
 }
-
-
-Particle.dampening = 0.95;
-Particle.maxSqDist = 10000;
-Particle.maxHomeForce = 1;
