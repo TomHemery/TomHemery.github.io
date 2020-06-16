@@ -1,8 +1,9 @@
 let canvas;
-let particleSystem;
+let emitter;
 
 function windowResized(){
     resizeCanvas(windowWidth, windowHeight);
+    emitter.setPos(width - mouseX, height - mouseY);
 }
 
 function setup() {
@@ -12,12 +13,11 @@ function setup() {
 
     ellipseMode(CENTER);
 
-    particleSystem = new ParticleSystem();
+    emitter = new ParticleEmitter(width - mouseX, height - mouseY, 80);
 }
   
 function draw() {
-    particleSystem.update();
-
-    background(0, 200);
-    particleSystem.display();
+    background(0);
+    fill(255);
+    emitter.show();
 }
