@@ -122,8 +122,9 @@ body{
 
 .socialnav{
   text-align: center;
-  position: fixed;
-  bottom: 0;
+  position: absolute;
+  margin-top: 10px;
+  bottom: 0px;
   width:100%;
   padding-bottom: 16px;
 }
@@ -143,11 +144,14 @@ body{
 }
 
 .avatar{
-  max-width: 25%; 
   height:auto; 
   width:auto; 
   margin-left:auto; 
   margin-right:auto; 
   display: block;
   border-radius: 50%;
+  padding: 20px;
+
+  min-width: 256px;
+  width:25%;
 }
