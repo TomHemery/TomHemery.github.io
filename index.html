@@ -8,8 +8,8 @@
         <title>Tom.com</title>
         <nav class="topnav">
             <div class="outerdiv">
-                <i class="fa fa-bars fa-2x"></i>
-                <div class="innerdiv">
+                <button class="dropdownbtn" onclick="dropdown()"><i class="fa fa-bars fa-2x"></i></button>
+                <div class="innerdiv" id="innerdiv">
                     <a class="active" href="#home">Home</a>
                     <a href="#skills">Skills</a>
                     <a href="#education">Education</a>
@@ -40,4 +40,14 @@
         </nav>
 
     </body>
+
+    <script>
+        let displaydropdown = false;
+
+        function dropdown(){
+            displaydropdown = !displaydropdown;
+            document.getElementById("innerdiv").style.display = displaydropdown ? "block" : "none"
+        }
+
+    </script>
 </html>
