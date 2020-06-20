@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="./library/p5.js"></script>
         <script src="homepageBGSketch.js"></script>
+        <script src="dropdownControl.js"></script>
         <title>Tom.com</title>
         <nav class="topnav">
             <div class="outerdiv">
@@ -41,22 +42,4 @@
             </nav>
         </div>
     </footer>
-
-    <script>
-        let displaydropdown = false;
-
-        function dropdown(){
-            displaydropdown = !displaydropdown;
-            element =  document.getElementById("innerdiv");
-            if(!displaydropdown){
-                element.classList.remove("visibleBlock");
-                element.classList.add("hidden");
-            }
-            else{
-                element.classList.add("visibleBlock");
-                element.classList.remove("hidden");
-            }
-        }
-
-    </script>
 </html>
