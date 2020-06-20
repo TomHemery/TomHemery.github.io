@@ -46,7 +46,15 @@
 
         function dropdown(){
             displaydropdown = !displaydropdown;
-            document.getElementById("innerdiv").style.display = displaydropdown ? "block" : "none"
+            element =  document.getElementById("innerdiv");
+            if(!displaydropdown){
+                element.classList.remove("visibleBlock");
+                element.classList.add("hidden");
+            }
+            else{
+                element.classList.add("visibleBlock");
+                element.classList.remove("hidden");
+            }
         }
 
     </script>

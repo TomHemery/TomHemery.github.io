@@ -71,12 +71,24 @@ body{
 
   .dropdownbtn{
     display:block;
+  } 
+
+  .hidden{
+    display: none;
+  }
+
+  .visibleBlock{
+    display: block;
   }
 }
   
 @media only screen and (min-width: 600px){
   .outerdiv i{
     display:none;
+  }
+
+  .innerdiv{
+    display:block;
   }
 
   .topnav a:hover {
