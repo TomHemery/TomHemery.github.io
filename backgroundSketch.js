@@ -17,10 +17,11 @@ let refreshFrames = 5;
 let maxVel = 10.0;
 
 function windowResized(){
-    resizeCanvas(windowWidth, windowHeight);
+  resizeCanvas(windowWidth, windowHeight);
 }
 
 function setup(){
+  delete canvas;
   canvas = createCanvas(windowWidth, windowHeight);
   canvas.position(0, 0);
   canvas.style('z-index', '-1');
@@ -33,6 +34,8 @@ function setup(){
   endVel = createVector();
 
   background(0);
+
+  if (window.DeviceOrientationEvent) { window.addEventListener('orientationchange', function() { location.reload(); }, false); }
 }
 
 function draw(){
@@ -48,8 +51,6 @@ function draw(){
     line(startPoint.x, startPoint.y, endPoint.x, endPoint.y);
     frameCounter = 0;
   }
-  
-  
   
   endVel.add(p5.Vector.random2D().mult(random(minAccel, maxAccel)));
   startVel.add(p5.Vector.random2D().mult(random(minAccel, maxAccel)));
